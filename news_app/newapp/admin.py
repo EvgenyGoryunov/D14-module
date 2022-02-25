@@ -1,10 +1,9 @@
 from django.contrib import admin
-from modeltranslation.admin import TranslationAdmin  # импортируем модель амдинки (вспоминаем модуль про
-
-
 
 
 # переопределение стандартных админ-инструментов)
+from modeltranslation.admin import TranslationAdmin
+
 from .models import *
 
 
@@ -26,16 +25,22 @@ def like_minus_five(modeladmin, request, queryset):
 #     model = Post
 
 
-class PostAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'category', 'author', 'rating',)
-    list_filter = ('category', 'author')
-    actions = [like_plus_five, like_minus_five]  # добавляем действия в список
-    search_fields = ('title',)  # тут всё очень похоже на фильтры из запросов в базу
+# class PostAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'title', 'category', 'author', 'rating',)
+#     list_filter = ('category', 'author')
+#     actions = [like_plus_five, like_minus_five]  # добавляем действия в список
+#     search_fields = ('title',)  # тут всё очень похоже на фильтры из запросов в базу
     # model = Post
 
 
-class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name',)
+# class CategoryAdmin(admin.ModelAdmin):
+#     list_display = ('id', 'name',)
+
+class PostAdmin(TranslationAdmin):
+    model = Post
+
+class CategoryAdmin(TranslationAdmin):
+    model = Category
 
 
 admin.site.register(Author)
