@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-25 10:30+0700\n"
+"POT-Creation-Date: 2022-02-25 14:34+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\newapp\models.py:92
+msgid "category name"
+msgstr ""
+
+#: .\newapp\templates\flatpages\default.html:77
+msgid "Check out my new cool translation"
+msgstr ""
 
 #: .\newapp\views.py:20
 msgid "Hello world"

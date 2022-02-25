@@ -6,7 +6,7 @@ from django.shortcuts import redirect
 from django.template.loader import render_to_string
 from django.views import View
 from django.views.generic import ListView, UpdateView, CreateView, DetailView, DeleteView
-
+#
 from .filters import NewsFilter
 from .forms import NewsForm
 from .models import Post, Category
@@ -16,9 +16,12 @@ from django.utils.translation import gettext as _
 
 
 class Index(View):
-    def get(self, request):
-        string = _('Hello world')
-        return HttpResponse(string)
+    # template_name = 'news_detail.html'
+    template_name = 'index.html'
+
+    # def get(self, request):
+    #     string = _('Hello world')
+    #     return HttpResponse(string)
 
 
 # дженерик для главной страницы

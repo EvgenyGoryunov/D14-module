@@ -1,9 +1,11 @@
-from django.urls import path
+from django.urls import path, include
 
 from .views import NewsList, NewsDetail, NewsSearch, AddNews, ChangeNews, DeleteNews, add_subscribe, \
     del_subscribe, Index
 
 urlpatterns = [
+
+    path('i18n/', include('django.conf.urls.i18n')),
 
     path('index/', Index.as_view(), name='Index'),
 

@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
 
+{% load i18n %} <!-- Загружаем модуль для перевода текстов, модуль Д14 -->
 {% load cache %} <!-- Загружаем кэширование -->
 {% cache 30 header %} <!-- Кэшируем отдельный блок на 30 секунд -->
+
+<html lang="en">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
@@ -10,10 +12,6 @@
     <meta name="author" content=""/>
 
     <title> {% block title %} {% endblock title %}</title>
-
-    <!--     Favicon
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />-->
-
 
     <!-- Core theme CSS (includes Bootstrap)-->
     {% load static %}

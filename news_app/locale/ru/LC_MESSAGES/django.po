@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-25 10:40+0700\n"
+"POT-Creation-Date: 2022-02-25 14:34+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,14 @@ msgstr ""
 "10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%"
 "100>=11 && n%100<=14)? 2 : 3);\n"
 
+#: .\newapp\models.py:92
+msgid "category name"
+msgstr ""
+
+#: .\newapp\templates\flatpages\default.html:77
+msgid "Check out my new cool translation"
+msgstr ""
+
 #: .\newapp\views.py:20
 msgid "Hello world"
-msgstr "111"
+msgstr ""
