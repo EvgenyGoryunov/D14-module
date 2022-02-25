@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load i18n %}
 <html lang="en">
 
 {% load cache %} <!-- Загружаем кэширование -->
@@ -11,11 +12,6 @@
 
     <title> {% block title %} {% endblock title %}</title>
 
-    <!-- Favicon
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    -->
-
-
     <!-- Core theme CSS (includes Bootstrap)-->
     {% load static %}
     <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
@@ -27,22 +23,22 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
 
-        <a class="navbar-brand" href="http://127.0.0.1:8000/news/">-=NewsPortal CityTomsk=-</a>
+        <a class="navbar-brand" href="http://127.0.0.1:8000/news/">{% trans "-=NewsPortal CityTomsk=-" %}</a>
 
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="http://127.0.0.1:8000/news">AllNews</a>
+                    <a class="nav-link" href="http://127.0.0.1:8000/news">{% trans "AllNews" %}</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'news_add' %}">AddNews</a>
+                    <a class="nav-link" href="{% url 'news_add' %}">{% trans "AddNews" %}</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'news_search' %}">SearchNews</a>
+                    <a class="nav-link" href="{% url 'news_search' %}">{% trans 'SearchNews' %}</a>
                 </li>
 
                 <li class="nav-item">
@@ -50,12 +46,30 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="http://127.0.0.1:8000/admin">AdminPanel</a>
+                    <a class="nav-link" href="http://127.0.0.1:8000/admin">{% trans 'AdminPanel' %}</a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="http://127.0.0.1:8000/news/index">Index</a>
                 </li>
+
+                <form action="{% url 'set_language' %}" method="POST"> {% csrf_token %}
+                    <!-- Не забываем по csrf_token для POST запросов -->
+                    <input type="hidden" name="next" value="{{ redirect_to }}">
+
+                    <select name="language" id="">
+                        {% get_available_languages as LANGUAGES %} <!-- получаем языки -->
+                        {% get_language_info_list for LANGUAGES as languages %} <!-- Помещаем их в список languages -->
+
+                        {% for language in languages %}
+                        <!-- Итерируясь по списку, выводим их название на языке пользователя и код -->
+                        <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %} selected {% endif %}>
+                            {{ language.name_local }} - {{ language.code }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                    <input type="submit" value="set">
+                </form>
 
 
             </ul>

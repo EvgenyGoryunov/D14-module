@@ -65,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
 
     'django.middleware.locale.LocaleMiddleware',  # для модуля Д14
+
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -143,7 +144,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # чтобы админ панель отображалась на русском языке
 # LANGUAGE_CODE = 'en-us'
-LANGUAGE_CODE = 'ru'  # для перевода на русский
+
+
+LANGUAGE_CODE = 'ru'
 
 # часовой пояс (задано время - самара)
 TIME_ZONE = 'Europe/Samara'

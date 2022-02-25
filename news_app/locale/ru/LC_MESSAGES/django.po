@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-25 20:59+0700\n"
+"POT-Creation-Date: 2022-02-25 21:36+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,10 +19,30 @@ msgstr ""
 "10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%"
 "100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: .\newapp\templates\index.html:28
+#: .\newapp\templates\flatpages\default.html:26
+msgid "-=NewsPortal CityTomsk=-"
+msgstr "-=НовостнойПортал CityTomsk=-"
+
+#: .\newapp\templates\flatpages\default.html:33
+msgid "AllNews"
+msgstr "Новости"
+
+#: .\newapp\templates\flatpages\default.html:37
+msgid "AddNews"
+msgstr "Добавить"
+
+#: .\newapp\templates\flatpages\default.html:41
+msgid "SearchNews"
+msgstr "Поиск"
+
+#: .\newapp\templates\flatpages\default.html:49
+msgid "AdminPanel"
+msgstr "Админ"
+
+#: .\newapp\templates\index.html:30
 msgid "Check out my new cool translation"
-msgstr "Проверка работы переводчика"
+msgstr "Проверь "
 
 #: .\newapp\views.py:22
 msgid "Hello world"
-msgstr "Привет, мир!"
+msgstr "Привет"
