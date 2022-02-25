@@ -1,12 +1,14 @@
 {% extends 'flatpages/default.html' %}
 
+{% load i18n %}
+
 <!-- Название вкладки (строки в браузере)-->
-{% block title %} -=NewsPortal CityTomsk=- {% endblock title %}
+<!--{% block title %} -=NewsPortal CityTomsk=- {% endblock title %}-->
 
 
 {% block content %}
 <br>
-<h1>Все новости и посты</h1>
+<h1>{% trans "All news and posts" %}</h1>
 
 {% for post in posts %}
 <br>

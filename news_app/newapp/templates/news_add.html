@@ -1,10 +1,13 @@
 {% extends 'flatpages/default.html' %}
 
+{% load i18n %}
+
 {% block title %} Add News {{ post }} {% endblock title %}
 
 {% block content %}
+
 <br>
-<h3>Создать новость</h3>
+<h1>{% trans "Create a news item" %}</h1>
 <br>
 <form align="left" method="post">
     {% csrf_token %}

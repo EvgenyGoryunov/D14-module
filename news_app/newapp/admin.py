@@ -1,5 +1,10 @@
 from django.contrib import admin
+from modeltranslation.admin import TranslationAdmin  # импортируем модель амдинки (вспоминаем модуль про
 
+
+
+
+# переопределение стандартных админ-инструментов)
 from .models import *
 
 
@@ -9,6 +14,7 @@ def like_plus_five(modeladmin, request, queryset):
         posts.rating = posts.rating + 5
         posts.save()
 
+
 def like_minus_five(modeladmin, request, queryset):
     # функция  скрутки лайков статье
     for posts in queryset:
@@ -16,11 +22,16 @@ def like_minus_five(modeladmin, request, queryset):
         posts.save()
 
 
+# class PostAdmin(TranslationAdmin):
+#     model = Post
+
+
 class PostAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'category', 'author', 'rating',)
     list_filter = ('category', 'author')
     actions = [like_plus_five, like_minus_five]  # добавляем действия в список
     search_fields = ('title',)  # тут всё очень похоже на фильтры из запросов в базу
+    # model = Post
 
 
 class CategoryAdmin(admin.ModelAdmin):

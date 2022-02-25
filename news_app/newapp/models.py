@@ -4,7 +4,6 @@ from django.db import models
 from django.db.models import Sum
 from django.urls import reverse
 
-
 from django.db import models
 from django.utils.translation import gettext as _
 from django.utils.translation import pgettext_lazy # импортируем «ленивый» геттекст с подсказкой
@@ -87,8 +86,8 @@ class Post(models.Model):
     # автоматически добавляемая дата и время создания;
     dateCreation = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
 
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, default="Nature",
-                                 verbose_name='Категория')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True,
+                                 verbose_name='Категория')  # default="Nature",
 
     # заголовок статьи/новости;
     title = models.CharField(max_length=128, verbose_name='Название(title)')
