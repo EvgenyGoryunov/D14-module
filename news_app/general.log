@@ -10,12 +10,3 @@
 2022-02-13 15:35:11,562 INFO basehttp "GET /news/add/ HTTP/1.1" 200 3995
 2022-02-13 15:35:31,681 INFO basehttp "GET /admin/ HTTP/1.1" 200 15207
 2022-02-13 15:36:24,718 INFO autoreload C:\PycharmProjects\D11-module-v1\news_app\project\settings.py changed, reloading.
-2022-02-25 15:12:31,584 INFO autoreload Watching for file changes with StatReloader
-2022-02-25 15:12:37,623 WARNING base Method Not Allowed (GET): /news/index/
-2022-02-25 15:12:37,624 WARNING log Method Not Allowed: /news/index/
-2022-02-25 15:12:37,625 WARNING basehttp "GET /news/index/ HTTP/1.1" 405 0
-2022-02-25 15:12:40,414 INFO basehttp "GET /news/153/ HTTP/1.1" 200 2997
-2022-02-25 15:12:41,608 WARNING base Method Not Allowed (GET): /news/index/
-2022-02-25 15:12:41,608 WARNING log Method Not Allowed: /news/index/
-2022-02-25 15:12:41,608 WARNING basehttp "GET /news/index/ HTTP/1.1" 405 0
-2022-02-25 15:12:45,431 INFO autoreload C:\PycharmProjects\D11-module-v1\news_app\project\settings.py changed, reloading.

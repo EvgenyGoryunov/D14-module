@@ -3,8 +3,11 @@ from django.core.cache import cache
 from django.db import models
 from django.db.models import Sum
 from django.urls import reverse
-from django.utils.translation import pgettext_lazy
+
+
+from django.db import models
 from django.utils.translation import gettext as _
+from django.utils.translation import pgettext_lazy # импортируем «ленивый» геттекст с подсказкой
 
 
 class Author(models.Model):
@@ -69,8 +72,7 @@ class Category(models.Model):
 # Модель статьй и новостей
 class Post(models.Model):
     # связь «один ко многим» с моделью Author;
-    author = models.ForeignKey(Author, on_delete=models.CASCADE, default="John",
-                               verbose_name=pgettext_lazy('Author of article'))
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, default="John", verbose_name='Автор')
 
     # поле с выбором — «статья» или «новость»;
     NEWS = 'NW'
@@ -80,16 +82,16 @@ class Post(models.Model):
         (ARTICLE, 'Статья'),
     )
     categoryType = models.CharField(max_length=2, choices=CATEGORY_CHOICES, default=ARTICLE,
-                                    verbose_name=pgettext_lazy('Category types'))
+                                    verbose_name='Категория(categoryType)')
 
     # автоматически добавляемая дата и время создания;
-    dateCreation = models.DateTimeField(auto_now_add=True, verbose_name=pgettext_lazy('Date of creation'))
+    dateCreation = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
 
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, default="Nature",
-                                 verbose_name=pgettext_lazy('Categorys'))
+                                 verbose_name='Категория')
 
     # заголовок статьи/новости;
-    title = models.CharField(max_length=128, verbose_name=pgettext_lazy('Title'), help_text=_('category name'))
+    title = models.CharField(max_length=128, verbose_name='Название(title)')
 
     # текст статьи/новости;
     text = models.TextField()

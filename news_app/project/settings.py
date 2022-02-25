@@ -63,6 +63,8 @@ SITE_ID = 1
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+
+    'django.middleware.locale.LocaleMiddleware',  # для модуля Д14
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -149,15 +151,14 @@ TIME_ZONE = 'Europe/Samara'
 
 USE_I18N = True
 
-# USE_L10N = True
+USE_L10N = True
 
-# USE_TZ = True
+USE_TZ = True
 
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale')
 ]
 
-# модуль Д14
 LANGUAGES = [
     ('ru', 'Русский'),
     ('en', 'English'),
@@ -299,6 +300,7 @@ CACHES = {
 # (DEBUG = True), то выводить сообщения и т.д.
 # 6 - хендлер, то есть обработчик, когда мы получили сообщение, обработчик может вывести его в
 # соответствии с форматом, фильтрами, уровнями либо в консоль, либо записать в файл, либо отправить по почте
+
 LOGGING = {
     'version': 1,  # 1
     'disable_existing_loggers': False,  # 2

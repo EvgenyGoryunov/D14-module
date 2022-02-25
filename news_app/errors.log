@@ -1,246 +1,60 @@
-2022-02-25 13:16:05,502 ERROR Internal Server Error: /news/ C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\utils\log.py (<class 'django.urls.exceptions.NoReverseMatch'>, NoReverseMatch("Reverse for 'set_language' not found. 'set_language' is not a valid view function or pattern name."), <traceback object at 0x00000160EAA170C0>)
+2022-02-25 20:52:39,648 ERROR Internal Server Error: /news/index/ C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\utils\log.py (<class 'django.template.exceptions.TemplateDoesNotExist'>, TemplateDoesNotExist('index.html'), <traceback object at 0x000002AF0287D680>)
 Traceback (most recent call last):
   File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
     response = get_response(request)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
-    response = response.render()
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\response.py", line 105, in render
-    self.content = self.rendered_content
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\response.py", line 83, in rendered_content
-    return template.render(context, self._request)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\backends\django.py", line 61, in render
-    return self.template.render(context)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 176, in render
-    return self._render(context)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 168, in _render
-    return self.nodelist.render(context)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 977, in render
-    return SafeString(''.join([
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 978, in <listcomp>
-    node.render_annotated(context) for node in self
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 938, in render_annotated
-    return self.render(context)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\loader_tags.py", line 153, in render
-    return compiled_parent._render(context)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 168, in _render
-    return self.nodelist.render(context)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 977, in render
-    return SafeString(''.join([
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 978, in <listcomp>
-    node.render_annotated(context) for node in self
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 938, in render_annotated
-    return self.render(context)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\templatetags\cache.py", line 47, in render
-    value = self.nodelist.render(context)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 977, in render
-    return SafeString(''.join([
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 978, in <listcomp>
-    node.render_annotated(context) for node in self
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 938, in render_annotated
-    return self.render(context)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\defaulttags.py", line 442, in render
-    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\urls\base.py", line 86, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\urls\resolvers.py", line 729, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for 'set_language' not found. 'set_language' is not a valid view function or pattern name.
-2022-02-25 13:16:05,509 ERROR "GET /news/ HTTP/1.1" 500 180179 C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\core\servers\basehttp.py None
-2022-02-25 13:16:10,469 ERROR Internal Server Error: /news/ C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\utils\log.py (<class 'django.urls.exceptions.NoReverseMatch'>, NoReverseMatch("Reverse for 'set_language' not found. 'set_language' is not a valid view function or pattern name."), <traceback object at 0x00000160EAB64E40>)
+  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\views\generic\base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\views\generic\base.py", line 101, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\PycharmProjects\D11-module-v1\news_app\newapp\views.py", line 24, in get
+    return HttpResponse(render(request, 'index.html', context))
+  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: index.html
+2022-02-25 20:52:39,654 ERROR "GET /news/index/ HTTP/1.1" 500 95278 C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\core\servers\basehttp.py None
+2022-02-25 20:53:21,816 ERROR Internal Server Error: /news/index/ C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\utils\log.py (<class 'django.template.exceptions.TemplateDoesNotExist'>, TemplateDoesNotExist('index.html'), <traceback object at 0x000002AF02AD3400>)
 Traceback (most recent call last):
   File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
     response = get_response(request)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
-    response = response.render()
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\response.py", line 105, in render
-    self.content = self.rendered_content
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\response.py", line 83, in rendered_content
-    return template.render(context, self._request)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\backends\django.py", line 61, in render
-    return self.template.render(context)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 176, in render
-    return self._render(context)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 168, in _render
-    return self.nodelist.render(context)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 977, in render
-    return SafeString(''.join([
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 978, in <listcomp>
-    node.render_annotated(context) for node in self
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 938, in render_annotated
-    return self.render(context)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\loader_tags.py", line 153, in render
-    return compiled_parent._render(context)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 168, in _render
-    return self.nodelist.render(context)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 977, in render
-    return SafeString(''.join([
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 978, in <listcomp>
-    node.render_annotated(context) for node in self
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 938, in render_annotated
-    return self.render(context)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\templatetags\cache.py", line 47, in render
-    value = self.nodelist.render(context)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 977, in render
-    return SafeString(''.join([
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 978, in <listcomp>
-    node.render_annotated(context) for node in self
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 938, in render_annotated
-    return self.render(context)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\defaulttags.py", line 442, in render
-    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\urls\base.py", line 86, in reverse
-    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\urls\resolvers.py", line 729, in _reverse_with_prefix
-    raise NoReverseMatch(msg)
-django.urls.exceptions.NoReverseMatch: Reverse for 'set_language' not found. 'set_language' is not a valid view function or pattern name.
-2022-02-25 13:16:10,478 ERROR "GET /news/ HTTP/1.1" 500 180037 C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\core\servers\basehttp.py None
-2022-02-25 15:06:09,836 ERROR Internal Server Error: /news/ C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\utils\log.py (<class 'django.template.exceptions.TemplateSyntaxError'>, TemplateSyntaxError("Could not parse the remainder: '==' from 'language.code=='"), <traceback object at 0x000001F0C0B26480>)
-Traceback (most recent call last):
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\smartif.py", line 175, in translate_token
-    op = OPERATORS[token]
-KeyError: 'language.code=='
-
-During handling of the above exception, another exception occurred:
-
+  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\views\generic\base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\views\generic\base.py", line 101, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\PycharmProjects\D11-module-v1\news_app\newapp\views.py", line 24, in get
+    return HttpResponse(render(request, 'index.html', context))
+  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: index.html
+2022-02-25 20:53:21,821 ERROR "GET /news/index/ HTTP/1.1" 500 95415 C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\core\servers\basehttp.py None
+2022-02-25 20:54:42,300 ERROR Internal Server Error: /news/index/ C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\utils\log.py (<class 'django.template.exceptions.TemplateDoesNotExist'>, TemplateDoesNotExist('index.html'), <traceback object at 0x000002AF02C098C0>)
 Traceback (most recent call last):
   File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
     response = get_response(request)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
-    response = response.render()
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\response.py", line 105, in render
-    self.content = self.rendered_content
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\response.py", line 83, in rendered_content
-    return template.render(context, self._request)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\backends\django.py", line 61, in render
-    return self.template.render(context)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 176, in render
-    return self._render(context)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 168, in _render
-    return self.nodelist.render(context)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 977, in render
-    return SafeString(''.join([
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 978, in <listcomp>
-    node.render_annotated(context) for node in self
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 938, in render_annotated
-    return self.render(context)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\loader_tags.py", line 130, in render
-    compiled_parent = self.get_parent(context)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\loader_tags.py", line 127, in get_parent
-    return self.find_template(parent, context)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\loader_tags.py", line 106, in find_template
-    template, origin = context.template.engine.find_template(
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\engine.py", line 145, in find_template
-    template = loader.get_template(name, skip=skip)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\loaders\base.py", line 29, in get_template
-    return Template(
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 155, in __init__
-    self.nodelist = self.compile_nodelist()
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 199, in compile_nodelist
-    return parser.parse()
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 508, in parse
-    raise self.error(token, e)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 506, in parse
-    compiled_result = compile_func(self, token)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\templatetags\cache.py", line 78, in do_cache
-    nodelist = parser.parse(('endcache',))
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 508, in parse
-    raise self.error(token, e)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 506, in parse
-    compiled_result = compile_func(self, token)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\defaulttags.py", line 810, in do_for
-    nodelist_loop = parser.parse(('empty', 'endfor',))
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 508, in parse
-    raise self.error(token, e)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 506, in parse
-    compiled_result = compile_func(self, token)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\defaulttags.py", line 904, in do_if
-    condition = TemplateIfParser(parser, bits).parse()
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\defaulttags.py", line 837, in __init__
-    super().__init__(*args, **kwargs)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\smartif.py", line 166, in __init__
-    mapped_tokens.append(self.translate_token(token))
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\smartif.py", line 177, in translate_token
-    return self.create_var(token)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\defaulttags.py", line 840, in create_var
-    return TemplateLiteral(self.template_parser.compile_filter(value), value)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 593, in compile_filter
-    return FilterExpression(token, self)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 692, in __init__
-    raise TemplateSyntaxError("Could not parse the remainder: '%s' "
-django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '==' from 'language.code=='
-2022-02-25 15:06:09,845 ERROR "GET /news/ HTTP/1.1" 500 257459 C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\core\servers\basehttp.py None
-2022-02-25 15:06:57,087 ERROR Internal Server Error: /news/ C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\utils\log.py (<class 'django.template.exceptions.TemplateSyntaxError'>, TemplateSyntaxError("Could not parse the remainder: '==' from 'language.code=='"), <traceback object at 0x000001A073AAB5C0>)
-Traceback (most recent call last):
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\smartif.py", line 175, in translate_token
-    op = OPERATORS[token]
-KeyError: 'language.code=='
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
-    response = get_response(request)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\core\handlers\base.py", line 204, in _get_response
-    response = response.render()
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\response.py", line 105, in render
-    self.content = self.rendered_content
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\response.py", line 83, in rendered_content
-    return template.render(context, self._request)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\backends\django.py", line 61, in render
-    return self.template.render(context)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 176, in render
-    return self._render(context)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 168, in _render
-    return self.nodelist.render(context)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 977, in render
-    return SafeString(''.join([
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 978, in <listcomp>
-    node.render_annotated(context) for node in self
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 938, in render_annotated
-    return self.render(context)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\loader_tags.py", line 130, in render
-    compiled_parent = self.get_parent(context)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\loader_tags.py", line 127, in get_parent
-    return self.find_template(parent, context)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\loader_tags.py", line 106, in find_template
-    template, origin = context.template.engine.find_template(
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\engine.py", line 145, in find_template
-    template = loader.get_template(name, skip=skip)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\loaders\base.py", line 29, in get_template
-    return Template(
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 155, in __init__
-    self.nodelist = self.compile_nodelist()
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 199, in compile_nodelist
-    return parser.parse()
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 508, in parse
-    raise self.error(token, e)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 506, in parse
-    compiled_result = compile_func(self, token)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\templatetags\cache.py", line 78, in do_cache
-    nodelist = parser.parse(('endcache',))
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 508, in parse
-    raise self.error(token, e)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 506, in parse
-    compiled_result = compile_func(self, token)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\defaulttags.py", line 810, in do_for
-    nodelist_loop = parser.parse(('empty', 'endfor',))
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 508, in parse
-    raise self.error(token, e)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 506, in parse
-    compiled_result = compile_func(self, token)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\defaulttags.py", line 904, in do_if
-    condition = TemplateIfParser(parser, bits).parse()
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\defaulttags.py", line 837, in __init__
-    super().__init__(*args, **kwargs)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\smartif.py", line 166, in __init__
-    mapped_tokens.append(self.translate_token(token))
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\smartif.py", line 177, in translate_token
-    return self.create_var(token)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\defaulttags.py", line 840, in create_var
-    return TemplateLiteral(self.template_parser.compile_filter(value), value)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 593, in compile_filter
-    return FilterExpression(token, self)
-  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\base.py", line 692, in __init__
-    raise TemplateSyntaxError("Could not parse the remainder: '%s' "
-django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '==' from 'language.code=='
-2022-02-25 15:06:57,211 ERROR "GET /news/ HTTP/1.1" 500 258665 C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\core\servers\basehttp.py None
+  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\views\generic\base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\views\generic\base.py", line 101, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\PycharmProjects\D11-module-v1\news_app\newapp\views.py", line 24, in get
+    return HttpResponse(render(request, 'index.html', context))
+  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: index.html
+2022-02-25 20:54:42,304 ERROR "GET /news/index/ HTTP/1.1" 500 94821 C:\PycharmProjects\D11-module-v1\venv\lib\site-packages\django\core\servers\basehttp.py None
