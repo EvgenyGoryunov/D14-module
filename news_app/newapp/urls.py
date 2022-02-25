@@ -1,9 +1,11 @@
 from django.urls import path
 
 from .views import NewsList, NewsDetail, NewsSearch, AddNews, ChangeNews, DeleteNews, add_subscribe, \
-    del_subscribe
+    del_subscribe, Index
 
 urlpatterns = [
+
+    path('index/', Index.as_view(), name='Index'),
 
     # модуль Д4 - вывод инфы из БД, создание новостей, редактирование, удаление и прочее
     path('', NewsList.as_view(), name='news'),

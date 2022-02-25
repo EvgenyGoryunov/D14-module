@@ -1,21 +1,35 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import PermissionRequiredMixin  # модуль Д5, чтоб ограничить права доступа
-from django.core.mail import EmailMultiAlternatives
-from django.shortcuts import redirect, render
+from django.core.cache import cache  # импортируем наш кэш
+from django.http import HttpResponse
+from django.shortcuts import redirect
 from django.template.loader import render_to_string
+from django.views import View
 from django.views.generic import ListView, UpdateView, CreateView, DetailView, DeleteView
 
 from .filters import NewsFilter
 from .forms import NewsForm
 from .models import Post, Category
-
 from .tasks import send_mail_for_sub_once
 
-from django.core.cache import cache # импортируем наш кэш
+from django.utils.translation import gettext as _
+
+
+class Index(View):
+    def get(self, request):
+        string = _('Hello world')
+        return HttpResponse(string)
 
 
 # дженерик для главной страницы
 class NewsList(ListView):
+    # (3)
+    # это имя списка, в котором будут лежать все объекты, его надо указать, чтобы обратиться к самому списку
+    # объектов через HTML-шаблон
+    # (2)
+    # указываем модель, объекты которой мы будем выводить
+    # указываем имя шаблона, в котором будет лежать HTML, в котором будут все инструкции о том, как именно
+    # пользователю должны вывестись наши объекты
     model = Post  # (2)
     template_name = 'news_list.html'
     context_object_name = 'posts'  # (3)
@@ -77,16 +91,11 @@ class NewsDetail(DetailView):
         return obj
 
 
-
-
 # дженерик для создания объекта. Можно указать только имя шаблона и класс формы
 class NewsAdd(CreateView):
     template_name = 'news_add.html'
     form_class = NewsForm
     success_url = '/news/'
-
-
-# (0)
 
 
 # дженерик для редактирования объекта
@@ -107,7 +116,13 @@ class NewsDelete(DeleteView):
     success_url = '/news/'  # после удаления нашей статьи перейдем по указанному адресу
 
 
-# (5)
+# функция подписки пользователя на категорию новости, которую в данный момент читает пользователь
+# передаем с нашей странички news_detail.html на которой находится пользователь (представление DetailView)
+# через GET запрос информацию в виде значения переменной ?pk={{ post.category.id }}, далее из объекта request
+# через метод GET.get('pk') выдираем ее значение (число) и используем для поиска в модели категории нужной
+# категории. С помощью метода add(request.user) добавляем нового пользователя в поле подписоты subscribers на
+# рассылку, добавляется связь многие-ко-многим в промежуточной таблице category_subscribers
+# (содержит ид записи, ид категории, ид юзера)
 @login_required
 def add_subscribe(request, **kwargs):
     pk = request.GET.get('pk', )
@@ -126,7 +141,11 @@ def del_subscribe(request, **kwargs):
 
 
 # Модуль Д5 - Ограничения прав доступа
-# (1)
+# через запятую указываем какие права хотим ограничить, предварительно в админ панели создали необходимые ограничения,
+# а в данном месте мы накладываем ограничения конкретно на представление, то есть выводы страничек сайта, если
+# пользователь не входит в нужную группу, ему вылетает страница с ошибкой 403 (страница недоступна вам)
+# Существует определенное соглашение для именования разрешений: <app>.<action>_<model>, пример 'newapp.add_post'
+# После того, как мы написали наши ограничения, нужно в urls изменить выводы преставлений, указав на новые
 class AddNews(PermissionRequiredMixin, NewsAdd):
     permission_required = ('newapp.add_post',)
 
@@ -192,8 +211,6 @@ def send_mail_for_sub(instance):
         # фукнция для таски, передаем в нее все что нужно для отправки подписчикам письма
         send_mail_for_sub_once.delay(sub_username, sub_useremail, html_content)
 
-
-
         # код ниже временно заблокирован, чтоб пока в процессе отладки не производилась реальная рассылка писем
         # msg.send()
 
@@ -203,67 +220,12 @@ def send_mail_for_sub(instance):
 
 
 
+""" 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#
-#
-#
-# (7)
-# способ отправки писем с разным содержимым, то есть по мимо текста можно отправить например
-# готовую страницу html (шаблон с готовым содержимым как в нашем случае)
-#
-# (6)
-# все что касается отправки писем в Django читать здесь
-# https://www.djbook.ru/rel3.0/topics/email.html#mail-admins
-# Отправка письма с шаблоном внутри
-# Здесь указываем имя нашего шаблона, и что будет в нашем шаблона, то есть передаем все наши переменные
-# и их значения в наш шаблон, если не указать явно их, то будут пустые строчки
-#
-# (5)
-# функция подписки пользователя на категорию новости, которую в данный момент читает пользователь
-# передаем с нашей странички news_detail.html на которой находится пользователь (представление DetailView)
-# через GET запрос информацию в виде значения переменной ?pk={{ post.category.id }}, далее из объекта request
-# через метод GET.get('pk') выдираем ее значение (число) и используем для поиска в модели категории нужной
-# категории. С помощью метода add(request.user) добавляем нового пользователя в поле подписоты subscribers на
-# рассылку, добавляется связь многие-ко-многим в промежуточной таблице category_subscribers
-# (содержит ид записи, ид категории, ид юзера)
-#
 # (4)
 # метод get_object используем вместо queryset, чтобы получить информацию об объекте, который мы собираемся
 #
-# (3)
-# это имя списка, в котором будут лежать все объекты, его надо указать, чтобы обратиться к самому списку
-# объектов через HTML-шаблон
-#
-# (2)
-# указываем модель, объекты которой мы будем выводить
-# указываем имя шаблона, в котором будет лежать HTML, в котором будут все инструкции о том, как именно
-# пользователю должны вывестись наши объекты
-#
-# (1)
-# через запятую указываем какие права хотим ограничить, предварительно в админ панели создали необходимые ограничения,
-# а в данном месте мы накладываем ограничения конкретно на представление, то есть выводы страничек сайта, если
-# пользователь не входит в нужную группу, ему вылетает страница с ошибкой 403 (страница недоступна вам)
-# Существует определенное соглашение для именования разрешений: <app>.<action>_<model>, пример 'newapp.add_post'
-# После того, как мы написали наши ограничения, нужно в urls изменить выводы преставлений, указав на новые
-#
-# (0)
+# 
 # Первый способ отправки сообщений подписчику (второй через сигналы сделан)
 # def post(self, request, *args, **kwargs):
 #     form = NewsForm(request.POST)
@@ -287,11 +249,16 @@ def send_mail_for_sub(instance):
 #     for subscriber in subscribers:
 #         # print('Адреса рассылки:', subscriber.email)
 #
-#         # (6)
+# все что касается отправки писем в Django читать здесь
+# https://www.djbook.ru/rel3.0/topics/email.html#mail-admins
+# Отправка письма с шаблоном внутри
+# Здесь указываем имя нашего шаблона, и что будет в нашем шаблона, то есть передаем все наши переменные
+# и их значения в наш шаблон, если не указать явно их, то будут пустые строчки
 #         html_content = render_to_string(
 #             'mail_sender.html', {'user': subscriber, 'text': sub_text[:50], 'post': news, 'host': host})
 #
-#         # (7)
+# способ отправки писем с разным содержимым, то есть по мимо текста можно отправить например
+# готовую страницу html (шаблон с готовым содержимым как в нашем случае)
 #         msg = EmailMultiAlternatives(
 #             # Заголовок письма, тема письма
 #             subject=f'Здравствуй, {subscriber.username}. Новая статья в вашем разделе!',
@@ -308,3 +275,5 @@ def send_mail_for_sub(instance):
 #         msg.send()
 #
 # return redirect('/news/')
+
+"""

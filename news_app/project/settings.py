@@ -149,18 +149,19 @@ TIME_ZONE = 'Europe/Samara'
 
 USE_I18N = True
 
-USE_L10N = True
+# USE_L10N = True
 
-USE_TZ = True
+# USE_TZ = True
 
-# LOCALE_PATHS = [
-#     os.path.join(BASE_DIR, 'locale')
-# ]
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale')
+]
 
-# LANGUAGES = [
-#     ('ru', 'Русский'),
-#     ('en', 'English'),
-# ]
+# модуль Д14
+LANGUAGES = [
+    ('ru', 'Русский'),
+    ('en', 'English'),
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -298,7 +299,6 @@ CACHES = {
 # (DEBUG = True), то выводить сообщения и т.д.
 # 6 - хендлер, то есть обработчик, когда мы получили сообщение, обработчик может вывести его в
 # соответствии с форматом, фильтрами, уровнями либо в консоль, либо записать в файл, либо отправить по почте
-
 LOGGING = {
     'version': 1,  # 1
     'disable_existing_loggers': False,  # 2
