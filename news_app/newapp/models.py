@@ -4,10 +4,6 @@ from django.db import models
 from django.db.models import Sum
 from django.urls import reverse
 
-from django.db import models
-from django.utils.translation import gettext as _
-from django.utils.translation import pgettext_lazy # импортируем «ленивый» геттекст с подсказкой
-
 
 class Author(models.Model):
     # cвязь «один к одному» с встроенной моделью пользователей User;
@@ -71,7 +67,7 @@ class Category(models.Model):
 # Модель статьй и новостей
 class Post(models.Model):
     # связь «один ко многим» с моделью Author;
-    author = models.ForeignKey(Author, on_delete=models.CASCADE, default="John", verbose_name='Автор')
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, verbose_name='Автор')  # default="John",
 
     # поле с выбором — «статья» или «новость»;
     NEWS = 'NW'
@@ -81,7 +77,7 @@ class Post(models.Model):
         (ARTICLE, 'Статья'),
     )
     categoryType = models.CharField(max_length=2, choices=CATEGORY_CHOICES, default=ARTICLE,
-                                    verbose_name='Категория(categoryType)')
+                                    verbose_name='Категория')
 
     # автоматически добавляемая дата и время создания;
     dateCreation = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
@@ -90,7 +86,7 @@ class Post(models.Model):
                                  verbose_name='Категория')  # default="Nature",
 
     # заголовок статьи/новости;
-    title = models.CharField(max_length=128, verbose_name='Название(title)')
+    title = models.CharField(max_length=128, verbose_name='Название')
 
     # текст статьи/новости;
     text = models.TextField()

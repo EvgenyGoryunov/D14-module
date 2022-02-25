@@ -19,8 +19,8 @@ from .tasks import send_mail_for_sub_once
 
 class Index(View):
     def get(self, request):
-        string = _('Hello world')
-        context = {'string': string}
+        models = Category.objects.all()
+        context = {'models': models}
         return HttpResponse(render(request, 'index.html', context))
 
 
