@@ -67,7 +67,9 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
 
-    'django.middleware.locale.LocaleMiddleware',  # для модуля Д14 (важна последовательность, именно так!!!!!)
+    'django.middleware.locale.LocaleMiddleware',  # для модуля Д14.3 (важна последовательность, именно так!!!!!)
+
+    'newapp.middlewares.TimezoneMiddleware',  # для модуля Д14.5 (для выбора времени, важна последовательность!!! внизу не работает)
 
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -76,7 +78,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware'
-
 ]
 
 ROOT_URLCONF = 'project.urls'

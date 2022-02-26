@@ -1,21 +1,24 @@
 <!DOCTYPE html>
+
+<!--для работы функции перевода страницы (чтоб можно было несколько вариантов текстов подключать-->
 {% load i18n %}
+{% load tz %}
+
 <html lang="en">
 
 {% load cache %} <!-- Загружаем кэширование -->
 {% cache 5 header %} <!-- Кэшируем отдельный блок на 30 секунд -->
+{% load static %}
+
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
-
     <title> {% block title %} {% endblock title %}</title>
-
-    <!-- Core theme CSS (includes Bootstrap)-->
-    {% load static %}
     <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
 </head>
+
 
 <body>
 
@@ -29,6 +32,8 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
 
+
+                    <!--************************** кнопки на главной страничке *************************************-->
                 <li class="nav-item">
                     <a class="nav-link" href="http://127.0.0.1:8000/news">{% trans "AllNews" %}</a>
                 </li>
@@ -52,6 +57,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="http://127.0.0.1:8000/news/index">Index</a>
                 </li>
+
+
+                <!--********************** для выбора языков на главной страничке **********************************-->
 
                 <form action="{% url 'set_language' %}" method="POST"> {% csrf_token %}
                     <!-- Не забываем по csrf_token для POST запросов -->
@@ -81,6 +89,13 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12 text-center">
+
+            <!-- Если сейчас больше чем 19 или же меньше 7, то выводим тёмную тему, иначе выводим светлую -->
+            <style>
+         body {background-color: {% if current_time.hour >= 19 or current_time.hour <= 7 %} darkcyan {% else %} powderblue {% endif %};}
+
+            </style>
+
             {% block content %}
             {% endblock content %}
         </div>

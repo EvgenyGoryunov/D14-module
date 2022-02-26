@@ -13,15 +13,30 @@ from .forms import NewsForm
 from .models import Post, Category
 from .tasks import send_mail_for_sub_once
 
+from django.utils import timezone
+from django.shortcuts import redirect
+import pytz
 
-# Create your views here.
 
-
+# пример для модуля Д14
 class Index(View):
     def get(self, request):
+
+        curent_time = timezone.now()
         models = Category.objects.all()
-        context = {'models': models}
+
+        context = {
+            'models': models,
+            'current_time': timezone.now(),
+            'timezones': pytz.common_timezones
+        }
         return HttpResponse(render(request, 'index.html', context))
+
+    def post(self, request):
+        request.session['django_timezone'] = request.POST['timezone']
+        return redirect('/')
+
+
 
 
 # дженерик для главной страницы
@@ -92,9 +107,6 @@ class NewsAdd(CreateView):
     template_name = 'news_add.html'
     form_class = NewsForm
     success_url = '/news/'
-
-
-# (0)
 
 
 # дженерик для редактирования объекта
